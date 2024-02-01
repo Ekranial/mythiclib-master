@@ -1,0 +1,107 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>io.lumine</groupId>
+    <artifactId>MythicLib</artifactId>
+    <packaging>pom</packaging>
+    <version>1.6.2-SNAPSHOT</version>
+    <modules>
+        <module>mythiclib-plugin</module>
+        <module>mythiclib-dist</module>
+<!--        <module>mythiclib-v1_14_r1</module>-->
+<!--        <module>mythiclib-v1_15_r1</module>-->
+<!--        <module>mythiclib-v1_16_r1</module>-->
+<!--        <module>mythiclib-v1_16_r2</module>-->
+<!--        <module>mythiclib-v1_16_r3</module>-->
+<!--&lt;!&ndash;        <module>mythiclib-v1_17_r1</module>&ndash;&gt;-->
+<!--        <module>mythiclib-v1_18_r1</module>-->
+<!--        <module>mythiclib-v1_18_r2</module>-->
+        <module>mythiclib-v1_19_r1</module>
+        <module>mythiclib-v1_19_r2</module>
+        <module>mythiclib-v1_19_r3</module>
+        <module>mythiclib-v1_20_r1</module>
+        <module>mythiclib-v1_20_r2</module>
+        <module>mythiclib-v1_20_r3</module>
+        <module>mythiclib-vr</module>
+    </modules>
+
+    <name>MythicLib</name>
+    <description>A hard dependency for the MMO plugins.</description>
+
+    <properties>
+        <downloadSources>false</downloadSources>
+        <downloadJavadocs>false</downloadJavadocs>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
+        <!-- Dependency versions -->
+        <junit.version>5.9.1</junit.version>
+    </properties>
+
+    <build>
+        <plugins>
+            <!-- <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>3.5.0</version>
+                <executions>
+                    <execution>
+                        <id>attach-javadocs</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin> -->
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
+                <configuration>
+                    <compilerArgument>-proc:none</compilerArgument>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
+
+            <!--
+            Clears all 'target' folders before building the plugin again.
+            This prevents MythicLib from including old versions of previous
+            classes when building the same version again -->
+            <plugin>
+                <artifactId>maven-clean-plugin</artifactId>
+                <version>3.1.0</version>
+                <executions>
+                    <execution>
+                        <id>auto-clean</id>
+                        <phase>initialize</phase>
+                        <goals>
+                            <goal>clean</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+    <dependencies>
+
+        <!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-clean-plugin -->
+        <dependency>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-clean-plugin</artifactId>
+            <version>3.1.0</version>
+            <scope>provided</scope>
+            <optional>true</optional>
+        </dependency>
+
+    </dependencies>
+
+    <pluginRepositories>
+        <pluginRepository>
+            <id>apache.snapshots</id>
+            <url>https://repository.apache.org/snapshots/</url>
+        </pluginRepository>
+    </pluginRepositories>
+</project>
